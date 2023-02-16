@@ -1,0 +1,24 @@
+name: OVolReg
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - ipykernel
+  - matplotlib
+  - matplotlib-base
+  - matplotlib-inline
+  - numpy
+  - numpy-base
+  - pillow
+  - pip
+  - python=3.8
+  - tqdm
+  - seaborn
+  - scikit-image
+  - h5py
+  - scipy
+  - pip:
+    - opencv-python
+    - torchsummary
+    - SimpleITK
+    - image-registration
