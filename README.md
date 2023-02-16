@@ -15,11 +15,11 @@ conda env create -f environment.yml
 
 2.1 If any packages have been added or changed in environment.yml by you or others, you simply update the environment by running
 
-conda activate OctNNrecon
+conda activate OVolReg
 
 conda env update --file environment.yml --prune
 
-3. activate env and run main.py to register your volumes with a couple prompts and command line inputs -> See section Command Line Interface
+3. activate env (<conda activate OVolReg> in terminal) and run main.py to register your volumes with a couple prompts and command line inputs -> See section Command Line Interface
 
 ## Command Line Interface
 The following functionality allows to use the registration functions of this Ovolreg library:
