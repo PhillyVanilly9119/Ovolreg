@@ -64,6 +64,13 @@ class VolumeRegistration2Dbased():
         xoff, yoff = -shifted[1], -shifted[0]
         return shift(offset_image, shift=(xoff,yoff), mode='constant')
     
+    @staticmethod
+    def find_factors(n: int) -> list:
+        #use the divider squared to reduce iterations
+        for i in range(2, n+1):
+            if n % i == 0:
+                print(i)
+
     def _rigid_registration(self, method: str="chisquared") -> np.array:
         buffer_size_pxls = self.dims[0] * self.dims[1]
         out_vol = np.zeros((tuple(self.dims)), dtype=np.uint8)
