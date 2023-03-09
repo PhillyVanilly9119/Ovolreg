@@ -37,24 +37,6 @@ def average_volumes_from_list(vol_list: list, dims: tuple) -> np.array:
     return np.mean(out_vol, axis=-1)
 
 
-def generate_enface_images(vol: np.array) -> np.array:
-    """Generates 4 differently gen
-
-    Args:
-        vol (np.array): _description_
-
-    Returns:
-        np.array: _description_
-    """
-    enface_stack = np.zeros((*vol.shape[1:], 4))
-    print(enface_stack.shape)
-    enface_stack[...,0] = np.mean(vol, axis=0)
-    enface_stack[...,1] = np.median(vol, axis=0)
-    enface_stack[...,2] = np.max(vol, axis=0)
-    enface_stack[...,3] = np.argmax(vol, axis=0)
-    return enface_stack
-
-
 def calculate_snr_for_nVols(vol_list: list, dims: tuple) -> np.array:
     snr = []
     out_vol = np.zeros((*dims,len(vol_list)), dtype=np.uint8)
@@ -62,25 +44,10 @@ def calculate_snr_for_nVols(vol_list: list, dims: tuple) -> np.array:
         with open(vol) as f:
             out_vol[...,i] = np.fromfile(f, dtype=np.uint8).reshape(dims)
     return np.mean(out_vol, axis=-1)
-    
-    
-# @staticmethod
-def normalize(x: np.array) -> np.array:
-    return (x-x.max()/(x.max()-x.min()))
 
-# @staticmethod
-def return_rpe_indeces(vol: np.array):
-    return vol.argmax(axis=0)
-    
     
 if __name__ == '__main__':
     test_path = r"C:\Users\PhilippsLabLaptop\Desktop\20230221_110638_binaries\OctVolume_17_20230221_110638_binaries_644x391x391.bin"
     with open(test_path) as f:
         v = np.fromfile(f, dtype=np.uint8).reshape((644,391,391))
-    enfaces = generate_enface_images(v)
-    # fig, ax = plt.subplots(2,2)
-    # ax[0,0].imshow(enfaces[...,0], cmap='gray')
-    # ax[1,0].imshow(enfaces[...,1], cmap='gray')
-    # ax[0,1].imshow(enfaces[...,2], cmap='gray')
-    # ax[1,1].imshow(enfaces[...,3], cmap='gray')
-    # plt.show()
+    
